@@ -64,13 +64,14 @@ export default class ReactSvgCircle extends Component {
   }
 
   update(inValue) {
-    const { lineWidth } = this.props;
+    const { lineWidth, onChange } = this.props;
     const r = 60 - lineWidth / 2;
     const value =
       inValue === 360
         ? arc(60, 60, r, 0, 359) + 'z'
         : arc(60, 60, r, 0, inValue);
     this.svg.setAttribute('d', value);
+    onChange({ target: { value } });
   }
 
   shouldComponentUpdate(inNextProps) {
