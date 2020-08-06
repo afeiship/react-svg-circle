@@ -8,6 +8,7 @@ $react-svg-circle-options: (
   $stroke: map-get( $map: $react-svg-circle-options, $key: stroke, );
 
   &__svg {
+    display: block;
     path {
       fill: $fill;
       stroke: $stroke;
