@@ -15,7 +15,8 @@ npm update @feizheng/react-svg-circle
 | Name      | Type   | Required | Default | Description                           |
 | --------- | ------ | -------- | ------- | ------------------------------------- |
 | className | string | false    | -       | The extended className for component. |
-| value     | object | false    | null    | Default value.                        |
+| lineWidth | number | false    | 10      | The circle line-width.                |
+| value     | number | false    | 0       | Circle deg, default 0.                |
 | onChange  | func   | false    | noop    | The change handler.                   |
 
 
@@ -35,11 +36,46 @@ npm update @feizheng/react-svg-circle
   import './assets/style.scss';
 
   class App extends React.Component {
-    componentDidMount() {}
+    state = {
+      value: 260
+    };
+
     render() {
+      const { value } = this.state;
       return (
         <div className="app-container">
-          <ReactSvgCircle />
+          <h2 className="is-title">Drag me to change</h2>
+          <div className="is-control">
+            <input
+              type="range"
+              onChange={(e) => {
+                const { value } = e.target;
+                this.setState({ value: parseInt(value) });
+              }}
+              step="1"
+              min="0"
+              max="360"
+              name=""
+              id=""
+            />
+          </div>
+          <div className="is-component">
+            <ReactSvgCircle
+              lineWidth={10}
+              value={value}
+              svgExtra={
+                <text
+                  x="20"
+                  y="35"
+                  x="50%"
+                  y="50%"
+                  dominantBaseline="middle"
+                  textAnchor="middle">
+                  {value}%
+                </text>
+              }
+            />
+          </div>
         </div>
       );
     }
@@ -51,3 +87,6 @@ npm update @feizheng/react-svg-circle
 
 ## documentation
 - https://afeiship.github.io/react-svg-circle/
+
+## resources
+- https://codepen.io/depthdev/pen/bNyxzG
