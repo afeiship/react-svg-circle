@@ -1,0 +1,16 @@
+$react-svg-circle-options: (
+  fill: none,
+  stroke: #08f,
+) !default;
+
+.react-svg-circle {
+  $fill: map-get( $map: $react-svg-circle-options, $key: fill, );
+  $stroke: map-get( $map: $react-svg-circle-options, $key: stroke, );
+
+  &__svg {
+    path {
+      fill: $fill;
+      stroke: $stroke;
+    }
+  }
+}

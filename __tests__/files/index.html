@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        .container{
+            width:120px;
+            height:120px;
+        }
+        path {
+            /* fill: #f00; */
+            fill: none;
+            /* fill-opacity: 0.3; */
+            /* fill-rule: evenodd; */
+            stroke-width: 10;
+            /* stroke-opacity: .75; */
+            stroke: #08f;
+        }
+    </style>
+    <div class="container">
+        <svg viewBox="0 0 120 120" id="arc">
+            <path />
+        </svg>
+    </div>
+    <script>
+        // https://codepen.io/depthdev/pen/bNyxzG
+        var _ = function (s) { return document.querySelector(s); }, path = _('path');
+        var arc = function (x, y, r, s, f, rotate) {
+            function coords(degrees) {
+                var radians = (degrees - (90 - (rotate || 0))) * Math.PI / 180.0;
+                return {
+                    x: x + (r * Math.cos(radians)),
+                    y: y + (r * Math.sin(radians))
+                };
+            };
+            var start = coords(s), finish = coords(f);
+            var d = [
+                'M', start.x, start.y,
+                'A', r, r, 0, ~~(f - s > 180), 1, finish.x, finish.y
+            ].join(' ');
+            return d;
+        }; // end arc()
+
+
+        // othte
+        // (50 + 5) * 2
+        path.setAttribute('d', arc(60, 60, 55, 0, 320));
+
+        // 360:
+        // path.setAttribute('d', arc(60, 60, 55, 0, 359) + ' z');
+
+
+
+    </script>
+</body>
+
+</html>
