@@ -23,6 +23,7 @@ class App extends React.Component {
             step="1"
             min="0"
             max="360"
+            value={value}
             name=""
             id=""
           />
