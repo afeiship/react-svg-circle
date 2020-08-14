@@ -9,6 +9,8 @@ $react-svg-circle-options: (
 
   &__svg {
     display: block;
+    //skill: ios9以及一些低端设备并不会 adjust width by parent container
+    width: 100%;
     path {
       fill: $fill;
       stroke: $stroke;

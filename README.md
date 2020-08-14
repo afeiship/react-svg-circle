@@ -17,12 +17,13 @@ npm update @feizheng/react-svg-circle
 ```
 
 ## properties
-| Name      | Type   | Required | Default | Description                           |
-| --------- | ------ | -------- | ------- | ------------------------------------- |
-| className | string | false    | -       | The extended className for component. |
-| lineWidth | number | false    | 10      | The circle line-width.                |
-| value     | number | false    | 0       | Circle deg, default 0.                |
-| onChange  | func   | false    | noop    | The change handler.                   |
+| Name      | Type   | Required | Default  | Description                           |
+| --------- | ------ | -------- | -------- | ------------------------------------- |
+| className | string | false    | -        | The extended className for component. |
+| lineWidth | number | false    | 10       | The circle line-width.                |
+| lineCap   | enum   | false    | 'square' | The circle line-cap.                  |
+| value     | number | false    | 0        | Circle deg, default 0.                |
+| onChange  | func   | false    | noop     | The change handler.                   |
 
 
 ## usage
@@ -91,11 +92,27 @@ npm update @feizheng/react-svg-circle
 
   ```
 
+## fix ios9 debug
+- babel `const` error
+  ```json
+  ["@babel/preset-env", {
+    "targets": {
+      "browsers": ["last 2 versions"],
+    }
+  }]
+  ```
+- babel `rest(..args)`
+  ```json
+  "@babel/plugin-transform-parameters"
+  ```
+
 ## documentation
 - https://afeiship.github.io/react-svg-circle/
 
 ## resources
 - https://codepen.io/depthdev/pen/bNyxzG
+- https://developer.mozilla.org/zh-CN/docs/Web/SVG/Attribute/stroke-linecap
+- https://www.zhangxinxu.com/wordpress/2014/08/svg-viewport-viewbox-preserveaspectratio/
 
 
 ## license

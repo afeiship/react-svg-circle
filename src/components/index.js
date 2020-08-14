@@ -4,7 +4,9 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import noop from '@feizheng/noop';
 
+const ENUM_CAPS = ['butt', 'round', 'square', 'inherit'];
 const CLASS_NAME = 'react-svg-circle';
+
 const arc = (x, y, r, s, f, rotate) => {
   const coords = (degrees) => {
     const radians = ((degrees - (90 - (rotate || 0))) * Math.PI) / 180.0;
@@ -30,6 +32,8 @@ const arc = (x, y, r, s, f, rotate) => {
   ].join(' ');
 };
 
+//lineCap: butt | round | square | inherit
+
 export default class ReactSvgCircle extends Component {
   static displayName = CLASS_NAME;
   static version = '__VERSION__';
@@ -43,6 +47,10 @@ export default class ReactSvgCircle extends Component {
      */
     lineWidth: PropTypes.number,
     /**
+     * The circle line-cap.
+     */
+    lineCap: PropTypes.oneOf(ENUM_CAPS),
+    /**
      * Circle deg, default 0.
      */
     value: PropTypes.number,
@@ -54,6 +62,7 @@ export default class ReactSvgCircle extends Component {
 
   static defaultProps = {
     lineWidth: 10,
+    lineCap: 'square',
     value: 0,
     onChange: noop
   };
@@ -84,6 +93,7 @@ export default class ReactSvgCircle extends Component {
     const {
       className,
       lineWidth,
+      lineCap,
       value,
       onChange,
       svgExtra,
@@ -96,10 +106,16 @@ export default class ReactSvgCircle extends Component {
         className={classNames(CLASS_NAME, className)}
         {...props}>
         <svg
+          xmlns="http://www.w3.org/2000/svg"
+          version="1.1"
           className={`${CLASS_NAME}__svg`}
           viewBox="0 0 120 120"
           {...svgProps}>
-          <path ref={(svg) => (this.svg = svg)} strokeWidth={lineWidth} />
+          <path
+            ref={(svg) => (this.svg = svg)}
+            strokeWidth={lineWidth}
+            strokeLinecap={lineCap}
+          />
           {svgExtra}
         </svg>
       </div>
