@@ -17,13 +17,16 @@ npm update @feizheng/react-svg-circle
 ```
 
 ## properties
-| Name      | Type   | Required | Default  | Description                           |
-| --------- | ------ | -------- | -------- | ------------------------------------- |
-| className | string | false    | -        | The extended className for component. |
-| lineWidth | number | false    | 10       | The circle line-width.                |
-| lineCap   | enum   | false    | 'square' | The circle line-cap.                  |
-| value     | number | false    | 0        | Circle deg, default 0.                |
-| onChange  | func   | false    | noop     | The change handler.                   |
+| Name        | Type    | Required | Default  | Description                           |
+| ----------- | ------- | -------- | -------- | ------------------------------------- |
+| className   | string  | false    | -        | The extended className for component. |
+| lineWidth   | number  | false    | 10       | The circle line-width.                |
+| lineCap     | enum    | false    | 'square' | The circle line-cap.                  |
+| value       | number  | false    | 0        | Circle deg, default 0.                |
+| onChange    | func    | false    | noop     | The change handler.                   |
+| svgExtra    | element | false    | -        | Extra element for the component.      |
+| svgProps    | any     | false    | -        | Any other svg props.                  |
+| circleProps | any     | false    | -        | Any other circle props.               |
 
 
 ## usage

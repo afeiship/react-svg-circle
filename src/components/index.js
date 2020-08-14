@@ -30,7 +30,19 @@ export default class ReactSvgCircle extends Component {
     /**
      * The change handler.
      */
-    onChange: PropTypes.func
+    onChange: PropTypes.func,
+    /**
+     * Extra element for the component.
+     */
+    svgExtra: PropTypes.element,
+    /**
+     * Any other svg props.
+     */
+    svgProps: PropTypes.any,
+    /**
+     * Any other circle props.
+     */
+    circleProps: PropTypes.any
   };
 
   static defaultProps = {
@@ -51,9 +63,12 @@ export default class ReactSvgCircle extends Component {
     };
   }
 
-  componentDidMount() {
-    const { value } = this.props;
-    // this.update(value);
+  shouldComponentUpdate(inNextProps) {
+    const { onChange, value } = inNextProps;
+    if (value !== this.props.value) {
+      onChange({ target: { value } });
+    }
+    return true;
   }
 
   render() {
@@ -65,6 +80,7 @@ export default class ReactSvgCircle extends Component {
       onChange,
       svgExtra,
       svgProps,
+      circleProps,
       ...props
     } = this.props;
     const { r, c, deg } = this.info;
@@ -87,6 +103,7 @@ export default class ReactSvgCircle extends Component {
             strokeWidth={lineWidth}
             strokeDasharray={c}
             strokeDashoffset={deg}
+            {...circleProps}
           />
           {svgExtra}
         </svg>
