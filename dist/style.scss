@@ -11,6 +11,7 @@ $react-svg-circle-options: (
     display: block;
     //skill: ios9以及一些低端设备并不会 adjust width by parent container
     width: 100%;
+    overflow: visible;
     path {
       fill: $fill;
       stroke: $stroke;

@@ -1,6 +1,6 @@
 {
   "name": "@feizheng/react-svg-circle",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Svg circle for react.",
   "main": "dist/index.js",
   "scripts": {
