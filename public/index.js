@@ -29,22 +29,17 @@ class App extends React.Component {
           />
         </div>
         <div className="is-component">
-          <ReactSvgCircle
-            lineWidth={10}
-            lineCap="round"
-            value={value}
-            svgExtra={
-              <text
-                x="20"
-                y="35"
-                x="50%"
-                y="50%"
-                dominantBaseline="middle"
-                textAnchor="middle">
-                {value}%
-              </text>
-            }
-          />
+          <ReactSvgCircle lineWidth={10} lineCap="round" value={value}>
+            <text
+              x="20"
+              y="35"
+              x="50%"
+              y="50%"
+              dominantBaseline="middle"
+              textAnchor="middle">
+              {value}%
+            </text>
+          </ReactSvgCircle>
         </div>
       </div>
     );
