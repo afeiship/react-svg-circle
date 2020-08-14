@@ -7,33 +7,6 @@ import noop from '@feizheng/noop';
 const ENUM_CAPS = ['butt', 'round', 'square', 'inherit'];
 const CLASS_NAME = 'react-svg-circle';
 
-const arc = (x, y, r, s, f, rotate) => {
-  const coords = (degrees) => {
-    const radians = ((degrees - (90 - (rotate || 0))) * Math.PI) / 180.0;
-    return {
-      x: x + r * Math.cos(radians),
-      y: y + r * Math.sin(radians)
-    };
-  };
-  let start = coords(s),
-    finish = coords(f);
-  return [
-    'M',
-    start.x,
-    start.y,
-    'A',
-    r,
-    r,
-    0,
-    ~~(f - s > 180),
-    1,
-    finish.x,
-    finish.y
-  ].join(' ');
-};
-
-//lineCap: butt | round | square | inherit
-
 export default class ReactSvgCircle extends Component {
   static displayName = CLASS_NAME;
   static version = '__VERSION__';
@@ -67,26 +40,20 @@ export default class ReactSvgCircle extends Component {
     onChange: noop
   };
 
+  get info() {
+    const { value, lineWidth } = this.props;
+    const r = (100 - lineWidth) / 2;
+    const c = 2 * Math.PI * r;
+    return {
+      r,
+      c,
+      deg: c - (c * value) / 360
+    };
+  }
+
   componentDidMount() {
     const { value } = this.props;
-    this.update(value);
-  }
-
-  update(inValue) {
-    const { lineWidth, onChange } = this.props;
-    const r = 60 - lineWidth / 2;
-    const value =
-      inValue === 360
-        ? arc(60, 60, r, 0, 359) + 'z'
-        : arc(60, 60, r, 0, inValue);
-    this.svg.setAttribute('d', value);
-    onChange({ target: { value } });
-  }
-
-  shouldComponentUpdate(inNextProps) {
-    const { value } = inNextProps;
-    value !== this.props.value && this.update(value);
-    return true;
+    // this.update(value);
   }
 
   render() {
@@ -100,6 +67,7 @@ export default class ReactSvgCircle extends Component {
       svgProps,
       ...props
     } = this.props;
+    const { r, c, deg } = this.info;
     return (
       <div
         data-component={CLASS_NAME}
@@ -109,12 +77,16 @@ export default class ReactSvgCircle extends Component {
           xmlns="http://www.w3.org/2000/svg"
           version="1.1"
           className={`${CLASS_NAME}__svg`}
-          viewBox="0 0 120 120"
+          viewBox="0 0 100 100"
           {...svgProps}>
-          <path
-            ref={(svg) => (this.svg = svg)}
-            strokeWidth={lineWidth}
+          <circle
+            cx="50"
+            cy="50"
+            r={r}
             strokeLinecap={lineCap}
+            strokeWidth={lineWidth}
+            strokeDasharray={c}
+            strokeDashoffset={deg}
           />
           {svgExtra}
         </svg>

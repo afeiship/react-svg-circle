@@ -69,6 +69,7 @@ npm update @feizheng/react-svg-circle
           <div className="is-component">
             <ReactSvgCircle
               lineWidth={10}
+              lineCap="round"
               value={value}
               svgExtra={
                 <text
