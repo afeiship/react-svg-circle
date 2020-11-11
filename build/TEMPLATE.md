@@ -53,6 +53,7 @@ __GENERATE_DAPP__
 - https://codepen.io/depthdev/pen/bNyxzG
 - https://developer.mozilla.org/zh-CN/docs/Web/SVG/Attribute/stroke-linecap
 - https://www.zhangxinxu.com/wordpress/2014/08/svg-viewport-viewbox-preserveaspectratio/
+- https://codepen.io/afeiship/pen/JjKeegV
 
 
 ## license
