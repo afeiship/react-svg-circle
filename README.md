@@ -17,15 +17,15 @@ npm update @feizheng/react-svg-circle
 ```
 
 ## properties
-| Name         | Type   | Required | Default  | Description                           |
-| ------------ | ------ | -------- | -------- | ------------------------------------- |
-| className    | string | false    | -        | The extended className for component. |
-| lineWidth    | number | false    | 10       | The circle line-width.                |
-| lineCap      | enum   | false    | 'square' | The circle line-cap.                  |
-| value        | number | false    | 0        | Circle deg, default 0.                |
-| onChange     | func   | false    | noop     | The change handler.                   |
-| svgProps     | any    | false    | -        | Any other svg props.                  |
-| elementProps | any    | false    | -        | Any other circle(main element) props. |
+| Name         | Type   | Required | Default   | Description                           |
+| ------------ | ------ | -------- | --------- | ------------------------------------- |
+| className    | string | false    | -         | The extended className for component. |
+| lineWidth    | number | false    | 10        | The circle line-width.                |
+| lineCap      | enum   | false    | 'inherit' | The circle line-cap.                  |
+| value        | number | false    | 0         | Circle deg, default 0.                |
+| onChange     | func   | false    | noop      | The change handler.                   |
+| svgProps     | any    | false    | -         | Any other svg props.                  |
+| elementProps | any    | false    | -         | Any other circle(main element) props. |
 
 
 ## usage
@@ -45,7 +45,7 @@ npm update @feizheng/react-svg-circle
 
   class App extends React.Component {
     state = {
-      value: 260
+      value: 180
     };
 
     render() {
@@ -69,7 +69,7 @@ npm update @feizheng/react-svg-circle
             />
           </div>
           <div className="is-component">
-            <ReactSvgCircle lineWidth={10} lineCap="round" value={value}>
+            <ReactSvgCircle lineWidth={20} lineCap="inherit" value={value}>
               <text
                 x="20"
                 y="35"

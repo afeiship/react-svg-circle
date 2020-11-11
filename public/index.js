@@ -5,7 +5,7 @@ import './assets/style.scss';
 
 class App extends React.Component {
   state = {
-    value: 260
+    value: 180
   };
 
   render() {
@@ -29,7 +29,7 @@ class App extends React.Component {
           />
         </div>
         <div className="is-component">
-          <ReactSvgCircle lineWidth={10} lineCap="round" value={value}>
+          <ReactSvgCircle lineWidth={20} lineCap="inherit" value={value}>
             <text
               x="20"
               y="35"

@@ -12,29 +12,12 @@ body,
 @import "@/components/style.scss";
 
 .app-container {
-  padding: 50px;
   box-sizing: border-box;
+  text-align: center;
   width: 90%;
-  margin: 0 auto;
   max-width: 500px;
-  .button {
-    background: #3cc51f;
-    width: 100%;
-    display: block;
-    margin-bottom: 10px;
-    border-radius: 10px;
-    color: #fff;
-    padding: 20px;
-    border: none;
-
-    &:active {
-      background: darken(#3cc51f, 10%);
-    }
-
-    &:focus {
-      outline: none;
-    }
-  }
+  margin: 0 auto;
+  padding: 50px 0 0;
 
   .is-title {
     margin-bottom: 10px;
@@ -49,6 +32,8 @@ body,
 
   .is-component {
     border: 1px solid #ccc;
-    padding: 20px;
+    width: 320px;
+    height: 320px;
+    margin: 0 auto;
   }
 }

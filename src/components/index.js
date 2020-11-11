@@ -43,7 +43,7 @@ export default class ReactSvgCircle extends Component {
 
   static defaultProps = {
     lineWidth: 10,
-    lineCap: 'square',
+    lineCap: 'inherit',
     value: 0,
     onChange: noop
   };
