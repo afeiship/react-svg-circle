@@ -90,8 +90,28 @@ npm install -S @jswork/react-svg-circle
 
   ```
 
+## fix ios9 debug
+- babel `const` error
+  ```json
+  ["@babel/preset-env", {
+    "targets": {
+      "browsers": ["last 2 versions"],
+    }
+  }]
+  ```
+- babel `rest(..args)`
+  ```json
+  "@babel/plugin-transform-parameters"
+  ```
+
 ## documentation
 - https://afeiship.github.io/react-svg-circle/
+
+## resources
+- https://codepen.io/depthdev/pen/bNyxzG
+- https://developer.mozilla.org/zh-CN/docs/Web/SVG/Attribute/stroke-linecap
+- https://www.zhangxinxu.com/wordpress/2014/08/svg-viewport-viewbox-preserveaspectratio/
+- https://codepen.io/afeiship/pen/JjKeegV
 
 
 ## license
