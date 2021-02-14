@@ -12,11 +12,15 @@ npm install -S @jswork/react-svg-circle
 ```
 
 ## properties
-| Name      | Type   | Required | Default | Description                           |
-| --------- | ------ | -------- | ------- | ------------------------------------- |
-| className | string | false    | -       | The extended className for component. |
-| value     | object | false    | null    | The changed value.                    |
-| onChange  | func   | false    | noop    | The change handler.                   |
+| Name         | Type   | Required | Default   | Description                           |
+| ------------ | ------ | -------- | --------- | ------------------------------------- |
+| className    | string | false    | -         | The extended className for component. |
+| lineWidth    | number | false    | 10        | The circle line-width.                |
+| lineCap      | enum   | false    | 'inherit' | The circle line-cap.                  |
+| value        | number | false    | 0         | Circle deg, default 0.                |
+| onChange     | func   | false    | noop      | The change handler.                   |
+| svgProps     | any    | false    | -         | Any other svg props.                  |
+| elementProps | any    | false    | -         | Any other circle(main element) props. |
 
 
 ## usage
@@ -39,13 +43,44 @@ npm install -S @jswork/react-svg-circle
   import './assets/style.scss';
 
   class App extends React.Component {
+    state = {
+      value: 180
+    };
     render() {
+      const { value } = this.state;
       return (
         <ReactDemokit
           className="p-3 app-container"
           url="https://github.com/afeiship/react-svg-circle">
-          <ReactSvgCircle className="mb-5 has-text-white" />
-          <button className="button is-primary is-fullwidth">Start~</button>
+          <h2 className="is-title">Drag me to change</h2>
+          <div className="is-control">
+            <input
+              type="range"
+              onChange={(e) => {
+                const { value } = e.target;
+                this.setState({ value: parseInt(value) });
+              }}
+              step="1"
+              min="0"
+              max="360"
+              value={value}
+              name=""
+              id=""
+            />
+          </div>
+          <div className="is-component">
+            <ReactSvgCircle lineWidth={20} lineCap="inherit" value={value}>
+              <text
+                x="20"
+                y="35"
+                x="50%"
+                y="50%"
+                dominantBaseline="middle"
+                textAnchor="middle">
+                {value}%
+              </text>
+            </ReactSvgCircle>
+          </div>
         </ReactDemokit>
       );
     }

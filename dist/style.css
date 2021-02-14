@@ -1,5 +1,9 @@
-.react-svg-circle {
-  color: red;
-  font-size: 12px; }
-  .react-svg-circle:active {
-    color: black; }
+.react-svg-circle__svg {
+  display: block;
+  width: 100%;
+  overflow: visible; }
+  .react-svg-circle__svg circle {
+    fill: none;
+    stroke: #08f;
+    transform: rotate(-90deg);
+    transform-origin: center center; }
