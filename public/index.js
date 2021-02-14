@@ -1,17 +1,19 @@
-import ReactSvgCircle from '../src/main';
-import ReactDOM from 'react-dom';
+import ReactDemokit from '@jswork/react-demokit';
 import React from 'react';
+import ReactDOM from 'react-dom';
+import ReactSvgCircle from '../src/main';
 import './assets/style.scss';
 
 class App extends React.Component {
   state = {
     value: 180
   };
-
   render() {
     const { value } = this.state;
     return (
-      <div className="app-container">
+      <ReactDemokit
+        className="p-3 app-container"
+        url="https://github.com/afeiship/react-svg-circle">
         <h2 className="is-title">Drag me to change</h2>
         <div className="is-control">
           <input
@@ -41,7 +43,7 @@ class App extends React.Component {
             </text>
           </ReactSvgCircle>
         </div>
-      </div>
+      </ReactDemokit>
     );
   }
 }

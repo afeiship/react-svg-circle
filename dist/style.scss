@@ -1,28 +1,10 @@
-$react-svg-circle-options: (
-  fill: none,
-  stroke: #08f,
-) !default;
+$react-svg-circle-options: () !default;
 
 .react-svg-circle {
-  $fill: map-get(
-    $map: $react-svg-circle-options,
-    $key: fill,
-  );
-  $stroke: map-get(
-    $map: $react-svg-circle-options,
-    $key: stroke,
-  );
-
-  &__svg {
-    display: block;
-    //skill: ios9以及一些低端设备并不会 adjust width by parent container
-    width: 100%;
-    overflow: visible;
-    circle {
-      fill: $fill;
-      stroke: $stroke;
-      transform: rotate(-90deg);
-      transform-origin: center center;
-    }
+  // your styles
+  color: red;
+  font-size: 12px;
+  &:active {
+    color: black;
   }
 }

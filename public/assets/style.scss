@@ -1,23 +1,18 @@
-* {
-  margin: 0;
-  padding: 0;
-}
-html,
-body,
-#app,
-.app-container {
-  height: 100%;
-}
-
 @import "@/components/style.scss";
+@import "~@jswork/react-github-corner/dist/style.scss";
+@import "~@jswork/react-sw-update-tips/dist/style.scss";
+@import "~@jswork/react-demokit/dist/style.scss";
 
 .app-container {
-  box-sizing: border-box;
-  text-align: center;
-  width: 90%;
-  max-width: 500px;
-  margin: 0 auto;
-  padding: 50px 0 0;
+  .is-body {
+    box-sizing: border-box;
+    text-align: center;
+    width: 90%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 50px 0 0;
+    background: #FFF;
+  }
 
   .is-title {
     margin-bottom: 10px;
