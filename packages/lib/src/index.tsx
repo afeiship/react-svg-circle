@@ -14,7 +14,7 @@ export type ReactSvgCircleProps = {
    */
   lineCap?: 'butt' | 'round' | 'square' | 'inherit';
   /**
-   * Circle deg, default 0.
+   * Circle deg, default 0.(range: 0 - 360)
    */
   value: number;
   /**
@@ -44,14 +44,19 @@ export default class ReactSvgCircle extends Component<ReactSvgCircleProps> {
     value: 0,
   };
 
+  get degValue() {
+    const { value } = this.props;
+    return value * 360 / 100;
+  }
+
   get info() {
-    const { value, lineWidth } = this.props;
+    const { lineWidth } = this.props;
     const r = (100 - lineWidth!) / 2;
     const c = 2 * Math.PI * r;
     return {
       r,
       c,
-      deg: c - (c * value) / 360,
+      deg: c - (c * this.degValue) / 360,
     };
   }
 
