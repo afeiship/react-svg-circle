@@ -9,7 +9,7 @@ function App() {
       <div className="badge badge-warning absolute right-0 top-0 m-4">
         Build Time: {BUILD_TIME}
       </div>
-      <section className="w-60 mx-auto p-4 y-2">
+      <section className="w-100 mx-auto p-4 y-2">
         <nav className="text-center bg-gray-200 py-2 rounded-md">
           <input
             type="range"
@@ -25,8 +25,17 @@ function App() {
             id=""
           />
         </nav>
-        <div className="bg-green-200 p-2 rounded-md">
-          <ReactSvgCircle lineWidth={6} lineCap="inherit" value={value} className="text-green-600">
+        <div className="debug-red *:bg-green-200 p-2 x-5 rounded-md">
+          <ReactSvgCircle lineWidth={6} lineCap="inherit" value={value} stroke="#007aff" className="text-green-600">
+            <text
+              x="50%"
+              y="50%"
+              dominantBaseline="middle"
+              textAnchor="middle">
+              {value}%
+            </text>
+          </ReactSvgCircle>
+          <ReactSvgCircle lineWidth={2} lineCap="inherit" value={value} stroke={{ start: '#007aff', end: '#ff5722' }} className="text-green-600">
             <text
               x="50%"
               y="50%"

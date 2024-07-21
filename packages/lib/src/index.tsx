@@ -4,6 +4,11 @@ import React, { ReactNode, Component, HTMLAttributes, SVGAttributes } from 'reac
 
 const CLASS_NAME = 'react-svg-circle';
 const uuid = () => Math.random().toString(36).slice(2, 9);
+type GradientColor = {
+  start: string;
+  end: string;
+};
+
 export type ReactSvgCircleProps = {
   /**
    * The circle line-width.
@@ -33,6 +38,10 @@ export type ReactSvgCircleProps = {
    * The children element.
    */
   children?: ReactNode;
+  /**
+   * The circle linear-gradient.
+   */
+  stroke?: GradientColor | string;
 } & HTMLAttributes<HTMLDivElement>;
 
 export default class ReactSvgCircle extends Component<ReactSvgCircleProps> {
@@ -43,6 +52,16 @@ export default class ReactSvgCircle extends Component<ReactSvgCircleProps> {
     lineCap: 'inherit',
     value: 0,
   };
+
+  private readonly id: string;
+
+  get strokeColor() {
+    const { stroke } = this.props;
+    if (typeof stroke === 'object') {
+      return `url(#${this.id})`;
+    }
+    return stroke;
+  }
 
   get degValue() {
     const { value } = this.props;
@@ -60,6 +79,11 @@ export default class ReactSvgCircle extends Component<ReactSvgCircleProps> {
     };
   }
 
+  constructor(props) {
+    super(props);
+    this.id = `${CLASS_NAME}-${uuid()}-gradient`;
+  }
+
   shouldComponentUpdate(props) {
     const { onChange, value } = props;
     if (value !== this.props.value) {
@@ -69,7 +93,6 @@ export default class ReactSvgCircle extends Component<ReactSvgCircleProps> {
   }
 
   render() {
-    console.log('uuid: ', uuid());
     const {
       className,
       lineWidth,
@@ -77,16 +100,14 @@ export default class ReactSvgCircle extends Component<ReactSvgCircleProps> {
       value,
       onChange,
       children,
+      stroke,
       svgProps,
       circleProps,
       ...props
     } = this.props;
     const { r, c, deg } = this.info;
     return (
-      <div
-        data-component={CLASS_NAME}
-        className={cx(CLASS_NAME, className)}
-        {...props}>
+      <div data-component={CLASS_NAME} className={cx(CLASS_NAME, className)}{...props}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           version="1.1"
@@ -98,7 +119,7 @@ export default class ReactSvgCircle extends Component<ReactSvgCircleProps> {
             cy="50"
             r={r}
             fill="none"
-            stroke="currentColor"
+            stroke={this.strokeColor}
             strokeLinecap={lineCap}
             strokeWidth={lineWidth}
             strokeDasharray={c}
@@ -106,6 +127,12 @@ export default class ReactSvgCircle extends Component<ReactSvgCircleProps> {
             {...circleProps}
           />
           {children}
+          <defs>
+            <linearGradient id={this.id} x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor={(stroke as any)?.start} />
+              <stop offset="100%" stopColor={(stroke as any)?.end} />
+            </linearGradient>
+          </defs>
         </svg>
       </div>
     );
