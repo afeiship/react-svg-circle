@@ -57,10 +57,8 @@ export default class ReactSvgCircle extends Component<ReactSvgCircleProps> {
 
   get strokeColor() {
     const { stroke } = this.props;
-    if (typeof stroke === 'object') {
-      return `url(#${this.id})`;
-    }
-    return stroke;
+    if (typeof stroke === 'string') return stroke;
+    return `url(#${this.id})`;
   }
 
   get degValue() {
