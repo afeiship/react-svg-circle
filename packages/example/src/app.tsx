@@ -26,7 +26,7 @@ function App() {
           />
         </nav>
         <div className="debug-red *:bg-green-200 p-2 x-5 rounded-md">
-          <ReactSvgCircle lineWidth={6} lineCap="inherit" value={value} stroke="#007aff" className="text-green-600">
+          <ReactSvgCircle lineWidth={6} lineCap="round" value={value} stroke="#007aff" className="text-green-600">
             <text
               x="50%"
               y="50%"
