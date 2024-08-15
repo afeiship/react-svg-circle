@@ -23,10 +23,6 @@ export type ReactSvgCircleProps = {
    */
   value: number;
   /**
-   * The change handler.
-   */
-  onChange?: (e: any) => void;
-  /**
    * Any other svg props.
    */
   svgProps?: any
@@ -82,21 +78,12 @@ export default class ReactSvgCircle extends Component<ReactSvgCircleProps> {
     this.id = `${CLASS_NAME}-${uuid()}-gradient`;
   }
 
-  shouldComponentUpdate(props) {
-    const { onChange, value } = props;
-    if (value !== this.props.value) {
-      onChange?.({ target: { value } });
-    }
-    return true;
-  }
-
   render() {
     const {
       className,
       lineWidth,
       lineCap,
       value,
-      onChange,
       children,
       stroke,
       svgProps,
