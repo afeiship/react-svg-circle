@@ -34,6 +34,10 @@ export type ReactSvgCircleProps = {
    * The circle linear-gradient.
    */
   stroke?: GradientColor | string;
+  /**
+   * The circle linear-gradient.
+   */
+  strokeGradient?: GradientColor;
 } & SVGAttributes<SVGElement>;
 
 export default class ReactSvgCircle extends Component<ReactSvgCircleProps> {
@@ -48,8 +52,8 @@ export default class ReactSvgCircle extends Component<ReactSvgCircleProps> {
   private readonly id: string;
 
   get strokeColor() {
-    const { stroke } = this.props;
-    if (typeof stroke === 'string') return stroke;
+    const { stroke, strokeGradient } = this.props;
+    if (typeof strokeGradient === 'undefined') return stroke;
     return `url(#${this.id})`;
   }
 
@@ -82,6 +86,7 @@ export default class ReactSvgCircle extends Component<ReactSvgCircleProps> {
       value,
       children,
       stroke,
+      strokeGradient,
       circleProps,
       ...props
     } = this.props;
@@ -110,8 +115,8 @@ export default class ReactSvgCircle extends Component<ReactSvgCircleProps> {
         {children}
         <defs>
           <linearGradient id={this.id} x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor={(stroke as any)?.start} />
-            <stop offset="100%" stopColor={(stroke as any)?.end} />
+            <stop offset="0%" stopColor={strokeGradient?.start} />
+            <stop offset="100%" stopColor={strokeGradient?.end} />
           </linearGradient>
         </defs>
       </svg>

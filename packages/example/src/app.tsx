@@ -35,7 +35,8 @@ function App() {
               {value}%
             </text>
           </ReactSvgCircle>
-          <ReactSvgCircle lineWidth={2} lineCap="inherit" value={value} stroke={{ start: '#007aff', end: '#ff5722' }}
+          <ReactSvgCircle lineWidth={2} lineCap="inherit" value={value}
+                          strokeGradient={{ start: '#007aff', end: '#ff5722' }}
                           className="text-green-600">
             <text
               x="50%"
