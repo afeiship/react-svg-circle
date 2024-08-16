@@ -3,6 +3,7 @@ import React, { ReactNode, Component, SVGAttributes } from 'react';
 
 const CLASS_NAME = 'react-svg-circle';
 const uuid = () => Math.random().toString(36).slice(2, 9);
+
 type GradientColor = {
   start: string;
   end: string;
@@ -24,7 +25,7 @@ export type ReactSvgCircleProps = {
   /**
    * Any other circle(main element) props.
    */
-  circleProps?: SVGAttributes<SVGElement>;
+  circleProps?: SVGAttributes<SVGCircleElement>;
   /**
    * The children element.
    */
