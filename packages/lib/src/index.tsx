@@ -90,6 +90,7 @@ export default class ReactSvgCircle extends Component<ReactSvgCircleProps> {
       <svg
         xmlns="http://www.w3.org/2000/svg"
         version="1.1"
+        data-component={CLASS_NAME}
         className={cx(CLASS_NAME, className)}
         viewBox="0 0 100 100"
         {...props}>
