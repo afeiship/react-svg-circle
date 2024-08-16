@@ -1,6 +1,5 @@
-// import noop from '@jswork/noop';
 import cx from 'classnames';
-import React, { ReactNode, Component, HTMLAttributes, SVGAttributes } from 'react';
+import React, { ReactNode, Component, SVGAttributes } from 'react';
 
 const CLASS_NAME = 'react-svg-circle';
 const uuid = () => Math.random().toString(36).slice(2, 9);
@@ -23,10 +22,6 @@ export type ReactSvgCircleProps = {
    */
   value: number;
   /**
-   * Any other svg props.
-   */
-  svgProps?: any
-  /**
    * Any other circle(main element) props.
    */
   circleProps?: SVGAttributes<SVGElement>;
@@ -38,7 +33,7 @@ export type ReactSvgCircleProps = {
    * The circle linear-gradient.
    */
   stroke?: GradientColor | string;
-} & HTMLAttributes<HTMLDivElement>;
+} & SVGAttributes<SVGElement>;
 
 export default class ReactSvgCircle extends Component<ReactSvgCircleProps> {
   static displayName = CLASS_NAME;
@@ -86,40 +81,38 @@ export default class ReactSvgCircle extends Component<ReactSvgCircleProps> {
       value,
       children,
       stroke,
-      svgProps,
       circleProps,
       ...props
     } = this.props;
     const { r, c, deg } = this.info;
+
     return (
-      <div data-component={CLASS_NAME} className={cx(CLASS_NAME, className)}{...props}>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          version="1.1"
-          className={`${CLASS_NAME}__svg`}
-          viewBox="0 0 100 100"
-          {...svgProps}>
-          <circle
-            cx="50"
-            cy="50"
-            r={r}
-            fill="none"
-            stroke={this.strokeColor}
-            strokeLinecap={lineCap}
-            strokeWidth={lineWidth}
-            strokeDasharray={c}
-            strokeDashoffset={deg}
-            {...circleProps}
-          />
-          {children}
-          <defs>
-            <linearGradient id={this.id} x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor={(stroke as any)?.start} />
-              <stop offset="100%" stopColor={(stroke as any)?.end} />
-            </linearGradient>
-          </defs>
-        </svg>
-      </div>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        version="1.1"
+        className={cx(CLASS_NAME, className)}
+        viewBox="0 0 100 100"
+        {...props}>
+        <circle
+          cx="50"
+          cy="50"
+          r={r}
+          fill="none"
+          stroke={this.strokeColor}
+          strokeLinecap={lineCap}
+          strokeWidth={lineWidth}
+          strokeDasharray={c}
+          strokeDashoffset={deg}
+          {...circleProps}
+        />
+        {children}
+        <defs>
+          <linearGradient id={this.id} x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stopColor={(stroke as any)?.start} />
+            <stop offset="100%" stopColor={(stroke as any)?.end} />
+          </linearGradient>
+        </defs>
+      </svg>
     );
   }
 }
