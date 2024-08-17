@@ -131,7 +131,7 @@ export default class ReactCircle extends Component<ReactCircleProps> {
           strokeWidth={thickness}
           strokeDasharray={c}
           strokeDashoffset={offset}
-          transform={`rotate(${rotate} ${50} ${50})`}
+          transform={`rotate(${rotate} 50 50)`}
           {...rest}
         >
           {children}
