@@ -26,7 +26,7 @@ function App() {
           />
         </nav>
         <div className="debug-red *:bg-green-200 *:rounded grid grid-cols-2 gap-4 p-2">
-          <ReactSvgCircle lineWidth={6} lineCap="round" value={value} stroke="#007aff" className="text-green-600">
+          <ReactSvgCircle lineWidth={6} lineCap="round" value={value} color="#007aff" className="text-green-600">
             <text
               x="50%"
               y="50%"
@@ -36,7 +36,10 @@ function App() {
             </text>
           </ReactSvgCircle>
           <ReactSvgCircle lineWidth={2} lineCap="inherit" value={value}
-                          strokeGradient={{ start: '#007aff', end: '#ff5722' }}
+                          colors={[
+                            { value: '#007aff', offset: 0 },
+                            { value: '#ff5722', offset: 100 },
+                          ]}
                           className="text-green-600">
             <text
               x="50%"

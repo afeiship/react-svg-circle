@@ -4,9 +4,9 @@ import React, { ReactNode, Component, SVGAttributes } from 'react';
 const CLASS_NAME = 'react-svg-circle';
 const uuid = () => Math.random().toString(36).slice(2, 9);
 
-type GradientColor = {
-  start: string;
-  end: string;
+type GradientItem = {
+  offset: number;
+  value: string;
 };
 
 export type ReactSvgCircleProps = {
@@ -33,11 +33,11 @@ export type ReactSvgCircleProps = {
   /**
    * The circle linear-gradient.
    */
-  stroke?: GradientColor | string;
+  color?: string;
   /**
-   * The circle linear-gradient.
+   * The circle linear-gradient colors.
    */
-  strokeGradient?: GradientColor;
+  colors?: GradientItem[];
 } & SVGAttributes<SVGElement>;
 
 export default class ReactSvgCircle extends Component<ReactSvgCircleProps> {
@@ -51,10 +51,13 @@ export default class ReactSvgCircle extends Component<ReactSvgCircleProps> {
 
   private readonly id: string;
 
-  get strokeColor() {
-    const { stroke, strokeGradient } = this.props;
-    if (typeof strokeGradient === 'undefined') return stroke;
-    return `url(#${this.id})`;
+  get colors() {
+    const { color, colors } = this.props;
+    if (Array.isArray(colors)) return colors;
+    return [
+      { offset: 0, value: color },
+      { offset: 100, value: color },
+    ];
   }
 
   get degValue() {
@@ -85,8 +88,6 @@ export default class ReactSvgCircle extends Component<ReactSvgCircleProps> {
       lineCap,
       value,
       children,
-      stroke,
-      strokeGradient,
       circleProps,
       ...props
     } = this.props;
@@ -105,7 +106,7 @@ export default class ReactSvgCircle extends Component<ReactSvgCircleProps> {
           cy="50"
           r={r}
           fill="none"
-          stroke={this.strokeColor}
+          stroke={`url(#${this.id})`}
           strokeLinecap={lineCap}
           strokeWidth={lineWidth}
           strokeDasharray={c}
@@ -114,9 +115,8 @@ export default class ReactSvgCircle extends Component<ReactSvgCircleProps> {
         />
         {children}
         <defs>
-          <linearGradient id={this.id} x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor={strokeGradient?.start} />
-            <stop offset="100%" stopColor={strokeGradient?.end} />
+          <linearGradient id={this.id} gradientTransform="rotate(90)">
+            {this.colors.map((item, index) => <stop key={index} offset={`${item.offset}%`} stopColor={item.value} />)}
           </linearGradient>
         </defs>
       </svg>
