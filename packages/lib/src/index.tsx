@@ -27,6 +27,10 @@ export type ReactSvgCircleProps = {
    */
   circleProps?: SVGAttributes<SVGCircleElement>;
   /**
+   * The linear-gradient props.
+   */
+  linearGradientProps?: SVGAttributes<SVGLinearGradientElement>;
+  /**
    * The children element.
    */
   children?: ReactNode;
@@ -87,10 +91,11 @@ export default class ReactSvgCircle extends Component<ReactSvgCircleProps> {
       thickness,
       lineCap,
       value,
-      children,
-      circleProps,
       color,
       colors,
+      children,
+      circleProps,
+      linearGradientProps,
       ...props
     } = this.props;
     const { r, c, deg } = this.info;
@@ -117,7 +122,7 @@ export default class ReactSvgCircle extends Component<ReactSvgCircleProps> {
         />
         {children}
         <defs>
-          <linearGradient id={this.id} gradientTransform="rotate(90)">
+          <linearGradient id={this.id} gradientTransform="rotate(90)" {...linearGradientProps}>
             {this.colors.map((item, index) => <stop key={index} offset={`${item.offset}%`} stopColor={item.value} />)}
           </linearGradient>
         </defs>
