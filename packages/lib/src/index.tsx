@@ -13,7 +13,7 @@ export type ReactSvgCircleProps = {
   /**
    * The circle line-width.
    */
-  lineWidth?: number;
+  thickness?: number;
   /**
    * The circle line-cap.
    */
@@ -44,7 +44,7 @@ export default class ReactSvgCircle extends Component<ReactSvgCircleProps> {
   static displayName = CLASS_NAME;
   static version = '__VERSION__';
   static defaultProps = {
-    lineWidth: 10,
+    thickness: 10,
     lineCap: 'inherit',
     value: 0,
   };
@@ -66,8 +66,8 @@ export default class ReactSvgCircle extends Component<ReactSvgCircleProps> {
   }
 
   get info() {
-    const { lineWidth } = this.props;
-    const r = (100 - lineWidth!) / 2;
+    const { thickness } = this.props;
+    const r = (100 - thickness!) / 2;
     const c = 2 * Math.PI * r;
     return {
       r,
@@ -84,7 +84,7 @@ export default class ReactSvgCircle extends Component<ReactSvgCircleProps> {
   render() {
     const {
       className,
-      lineWidth,
+      thickness,
       lineCap,
       value,
       children,
@@ -110,7 +110,7 @@ export default class ReactSvgCircle extends Component<ReactSvgCircleProps> {
           fill="none"
           stroke={`url(#${this.id})`}
           strokeLinecap={lineCap}
-          strokeWidth={lineWidth}
+          strokeWidth={thickness}
           strokeDasharray={c}
           strokeDashoffset={deg}
           {...circleProps}
