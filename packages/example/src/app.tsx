@@ -24,7 +24,7 @@ function App() {
             id=""
           />
         </nav>
-        <div className="*:rounded grid grid-cols-2 gap-4 p-2 debug-red">
+        <div className="*:rounded grid grid-cols-2 gap-4 p-2 border border-blue-100 rounded-lg bg-slate-50 hover:bg-slate-100 transition-all">
           <ReactSvg width="100" height="100" className="size-full">
             <ReactCircle thickness={8} value={100} color="#dde" />
             <ReactCircle thickness={5} value={100} radius={36} color="orange" />
