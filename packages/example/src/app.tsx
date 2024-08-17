@@ -24,10 +24,10 @@ function App() {
             id=""
           />
         </nav>
-        <div className="*:bg-blue-100 *:rounded grid grid-cols-2 gap-4 p-2 debug-red">
+        <div className="*:rounded grid grid-cols-2 gap-4 p-2 debug-red">
           <ReactSvg width="100" height="100" className="size-full">
-            <ReactCircle thickness={8} value={100} />
-            <ReactCircle thickness={5} value={100} radius={30} color="orange" />
+            <ReactCircle thickness={8} value={100} color="#dde" />
+            <ReactCircle thickness={5} value={100} radius={36} color="orange" />
             <ReactCircle thickness={3} color="green" value={value} />
             <text
               x="50%"
@@ -38,12 +38,16 @@ function App() {
             </text>
           </ReactSvg>
           <ReactSvg width="100" height="100" className="size-full">
+            <ReactCircle thickness={10} value={100} color="#ddd" />
             <ReactCircle thickness={10}
+                         colorRotate={90}
                          lineCap="round"
                          colors={[
                            { value: '#007aff', offset: 0 },
                            { value: '#ff5722', offset: 100 },
-                         ]} value={30} />
+                         ]}
+                         value={value}
+            />
             <text
               x="50%"
               y="50%"

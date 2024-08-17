@@ -49,6 +49,10 @@ export type ReactCircleProps = {
    * The transform rotate.
    */
   rotate?: number;
+  /**
+   * The transform color rotate.
+   */
+  colorRotate?: number;
 } & SVGAttributes<SVGCircleElement>;
 
 export default class ReactCircle extends Component<ReactCircleProps> {
@@ -97,7 +101,20 @@ export default class ReactCircle extends Component<ReactCircleProps> {
 
 
   render() {
-    const { className, children, color, colors, thickness, lineCap, value, rotate, radius, ...rest } = this.props;
+    const {
+      className,
+      children,
+      color,
+      colors,
+      thickness,
+      lineCap,
+      value,
+      rotate,
+      colorRotate,
+      radius,
+      ...rest
+    } = this.props;
+
     const { r, c, offset } = this.info;
 
     return (
@@ -120,7 +137,7 @@ export default class ReactCircle extends Component<ReactCircleProps> {
           {children}
         </circle>
         <defs>
-          <linearGradient id={this.id}>
+          <linearGradient id={this.id} gradientTransform={`rotate(${colorRotate})`}>
             {this.colors.map((item, index) => <stop key={index} offset={`${item.offset}%`} stopColor={item.value} />)}
           </linearGradient>
         </defs>
