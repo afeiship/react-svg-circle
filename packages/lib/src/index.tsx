@@ -89,6 +89,8 @@ export default class ReactSvgCircle extends Component<ReactSvgCircleProps> {
       value,
       children,
       circleProps,
+      color,
+      colors,
       ...props
     } = this.props;
     const { r, c, deg } = this.info;
