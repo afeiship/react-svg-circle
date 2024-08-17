@@ -1,5 +1,4 @@
-import ReactSvgCircle from '@jswork/react-svg-circle/src';
-import '@jswork/react-svg-circle/src/style.scss';
+import { ReactSvg, ReactCircle } from '@jswork/react-svg-circle/src/main';
 import { useState } from 'react';
 
 function App() {
@@ -25,8 +24,11 @@ function App() {
             id=""
           />
         </nav>
-        <div className="debug-red *:bg-green-200 *:rounded grid grid-cols-2 gap-4 p-2">
-          <ReactSvgCircle thickness={6} lineCap="round" value={value} color="#007aff" className="text-green-600">
+        <div className="*:bg-blue-100 *:rounded grid grid-cols-2 gap-4 p-2 debug-red">
+          <ReactSvg width="100" height="100" className="size-full">
+            <ReactCircle thickness={8} value={100} />
+            <ReactCircle thickness={5} value={100} radius={30} color="orange" />
+            <ReactCircle thickness={3} color="green" value={value} />
             <text
               x="50%"
               y="50%"
@@ -34,13 +36,14 @@ function App() {
               textAnchor="middle">
               {value}%
             </text>
-          </ReactSvgCircle>
-          <ReactSvgCircle thickness={2} lineCap="inherit" value={value}
-                          colors={[
-                            { value: '#007aff', offset: 0 },
-                            { value: '#ff5722', offset: 100 },
-                          ]}
-                          className="text-green-600">
+          </ReactSvg>
+          <ReactSvg width="100" height="100" className="size-full">
+            <ReactCircle thickness={10}
+                         lineCap="round"
+                         colors={[
+                           { value: '#007aff', offset: 0 },
+                           { value: '#ff5722', offset: 100 },
+                         ]} value={30} />
             <text
               x="50%"
               y="50%"
@@ -48,7 +51,7 @@ function App() {
               textAnchor="middle">
               {value}%
             </text>
-          </ReactSvgCircle>
+          </ReactSvg>
         </div>
       </section>
     </div>
