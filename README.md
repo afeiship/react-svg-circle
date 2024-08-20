@@ -21,8 +21,7 @@ npm install -S @jswork/react-svg-circle
   ```
 2. import js
   ```js
-  import ReactSvgCircle from '@jswork/react-svg-circle';
-  import '@jswork/react-svg-circle/dist/style.scss';
+  import { ReactSvg, ReactCircle } from '@jswork/react-svg-circle/main';
   import { useState } from 'react';
 
   function App() {
@@ -48,8 +47,11 @@ npm install -S @jswork/react-svg-circle
               id=""
             />
           </nav>
-          <div className="debug-red *:bg-green-200 p-2 x-5 rounded-md">
-            <ReactSvgCircle lineWidth={6} lineCap="inherit" value={value} stroke="#007aff" className="text-green-600">
+          <div className="*:rounded grid grid-cols-2 gap-4 p-2 border border-blue-100 rounded-lg bg-slate-50 hover:bg-slate-100 transition-all">
+            <ReactSvg width="100" height="100" className="size-full">
+              <ReactCircle thickness={8} value={100} color="#dde" />
+              <ReactCircle thickness={5} value={100} radius={36} color="orange" />
+              <ReactCircle thickness={3} color="green" value={value} />
               <text
                 x="50%"
                 y="50%"
@@ -57,8 +59,18 @@ npm install -S @jswork/react-svg-circle
                 textAnchor="middle">
                 {value}%
               </text>
-            </ReactSvgCircle>
-            <ReactSvgCircle lineWidth={2} lineCap="inherit" value={value} stroke={{ start: '#007aff', end: '#ff5722' }} className="text-green-600">
+            </ReactSvg>
+            <ReactSvg width="100" height="100" className="size-full">
+              <ReactCircle thickness={10} value={100} color="#ddd" />
+              <ReactCircle thickness={10}
+                           colorRotate={90}
+                           lineCap="round"
+                           colors={[
+                             { value: '#007aff', offset: 0 },
+                             { value: '#ff5722', offset: 100 },
+                           ]}
+                           value={value}
+              />
               <text
                 x="50%"
                 y="50%"
@@ -66,7 +78,7 @@ npm install -S @jswork/react-svg-circle
                 textAnchor="middle">
                 {value}%
               </text>
-            </ReactSvgCircle>
+            </ReactSvg>
           </div>
         </section>
       </div>
