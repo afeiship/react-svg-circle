@@ -64,6 +64,7 @@ export default class ReactCircle extends Component<ReactCircleProps> {
     value: 100,
     lineCap: 'inherit',
     rotate: -90,
+    colorRotate: 0,
   };
 
   private readonly id: string;
